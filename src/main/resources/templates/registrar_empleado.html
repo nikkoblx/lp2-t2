@@ -32,7 +32,7 @@
             <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
                 <span th:text="${errorMessage}"></span>
             </div>
-            <form th:action="@{/registrar_usuario}" th:object="${user}" method="post">
+            <form th:action="@{/registrar_empleado}" th:object="${empleado}" method="post">
                 <div class="form-group">
                     <label for="dni">DNI:</label>
                     <input type="text" class="form-control" id="dni" th:field="*{dni}" placeholder="Ingrese su DNI" value="12345678" required>

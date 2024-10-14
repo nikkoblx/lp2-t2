@@ -8,5 +8,5 @@ import pe.com.cibertec.Lp2_t2.model.EmpleadoEntity;
 @Repository
 public interface EmpleadoRepository extends JpaRepository<EmpleadoEntity, String>{
 
-	EmpleadoEntity findByDniEmpleado(String dniEmpleado);
+	EmpleadoEntity findByDni(String dni);
 }

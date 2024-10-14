@@ -29,10 +29,10 @@
     <div class="card shadow">
         <div class="card-body">
             <h2 class="text-center">Editar Empleado</h2>
-            <form th:action="@{/empleados/actualizar}" th:object="${empleado}" method="post">
+            <form th:action="@{/editar_empleado}" th:object="${empleado}" method="post">
                 <div class="form-group">
                     <label for="dni">DNI:</label>
-                    <input type="text" class="form-control" id="dni" th:field="*{dniEmpleado}" readonly>
+                    <input type="text" class="form-control" id="dni" th:field="*{dni}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -61,7 +61,7 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a th:href="@{/empleados}" class="btn btn-dark">Cancelar</a>
+                    <a th:href="@{/}" class="btn btn-dark">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>

@@ -23,7 +23,7 @@ public class EmpleadoEntity {
 
 	@Id
 	@Column(name = "dni_empleado", length = 8)
-	private String dniEmpleado;
+	private String dni;
 
 	@Column(name = "nombre_empleado", length = 45, nullable = false)
 	private String nombreEmpleado;

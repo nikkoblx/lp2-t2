@@ -20,11 +20,11 @@ public class EmpleadoController {
     public String index(Model model) {
         List<EmpleadoEntity> listarEmpleados = empleadoService.buscarEmpleados();
         model.addAttribute("list_empleado", listarEmpleados);
-        return "lista_empleados";
+        return "listar_empleados";
     }
 
-    @GetMapping("/detalle_empleado/{dniEmpleado}")
-    public String verDetalle(Model model, @PathVariable("dniEmpleado") String dniEmpleado) {
+    @GetMapping("/detalle_empleado/{dni}")
+    public String verDetalle(Model model, @PathVariable("dni") String dniEmpleado) {
         EmpleadoEntity empleadoEncontrado = empleadoService.buscarEmpleadoPorDni(dniEmpleado);
         if (empleadoEncontrado != null) {
             model.addAttribute("empleado", empleadoEncontrado);
@@ -34,9 +34,9 @@ public class EmpleadoController {
         return "detalle_empleado";
     }
 
-    @GetMapping("/delete_empleado/{dniEmpleado}")
-    public String deleteEmpleado(@PathVariable("dniEmpleado") String dniEmpleado) {
-        empleadoService.eliminarEmpleado(dniEmpleado);
+    @GetMapping("/delete_empleado/{dni}")
+    public String deleteEmpleado(@PathVariable("dni") String dni) {
+        empleadoService.eliminarEmpleado(dni);
         return "redirect:/listar_empleados";
     }
 
@@ -49,7 +49,7 @@ public class EmpleadoController {
     @PostMapping("/registrar_empleado")
     public String registrarEmpleado(@ModelAttribute("empleado") EmpleadoEntity empleado, Model model) {
         
-        if (empleadoService.buscarEmpleadoPorDni(empleado.getDniEmpleado()) != null) {
+        if (empleadoService.buscarEmpleadoPorDni(empleado.getDni()) != null) {
             model.addAttribute("errorMessage", "El empleado ya existe, usa otro DNI");
             model.addAttribute("empleado", empleado);
             return "registrar_empleado";
@@ -59,9 +59,9 @@ public class EmpleadoController {
         return "redirect:/listar_empleados";
     }
 
-    @GetMapping("/editar_empleado/{dniEmpleado}")
-    public String mostrarEditarEmpleado(@PathVariable("dniEmpleado") String dniEmpleado, Model model) {
-        EmpleadoEntity empleadoEncontrado = empleadoService.buscarEmpleadoPorDni(dniEmpleado);
+    @GetMapping("/editar_empleado/{dni}")
+    public String mostrarEditarEmpleado(@PathVariable("dni") String dni, Model model) {
+        EmpleadoEntity empleadoEncontrado = empleadoService.buscarEmpleadoPorDni(dni);
         if (empleadoEncontrado != null) {
             model.addAttribute("empleado", empleadoEncontrado);
         } else {
@@ -71,8 +71,8 @@ public class EmpleadoController {
         return "editar_empleado";
     }
 
-    @PostMapping("/editar_empleado/{dniEmpleado}")
-    public String editarEmpleado(@PathVariable("dniEmpleado") String dni, @ModelAttribute("empleado") EmpleadoEntity empleado) {
+    @PostMapping("/editar_empleado/{dni}")
+    public String editarEmpleado(@PathVariable("dni") String dni, @ModelAttribute("empleado") EmpleadoEntity empleado) {
         empleadoService.actualizarEmpleado(dni, empleado);
         return "redirect:/listar_empleados";
     }
