@@ -34,14 +34,28 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public void actualizarEmpleado(String dni, EmpleadoEntity empleadoEntity) {
-        if (empleadoRepository.existsById(dni)) {
-            empleadoEntity.setDni(dni);
-            empleadoRepository.save(empleadoEntity);
+        EmpleadoEntity empleadoExistente = empleadoRepository.findByDni(empleadoEntity.getDni());
+        if(empleadoExistente == null) {
+            throw new RuntimeException("Empleado no encontrado.");
+        }
+        try {
+            empleadoExistente.setNombreEmpleado(empleadoEntity.getNombreEmpleado());
+            empleadoExistente.setApellidoEmpleado(empleadoEntity.getApellidoEmpleado());
+            empleadoExistente.setFechaNacimiento(empleadoEntity.getFechaNacimiento());
+            empleadoExistente.setCorreo(empleadoEntity.getCorreo());
+            empleadoExistente.setDireccion(empleadoEntity.getDireccion());
+            empleadoExistente.setArea(empleadoEntity.getArea());
+            empleadoRepository.save(empleadoExistente);
+        } catch (Exception e) {
+            throw new RuntimeException("Ocurrió un error al actualizar. ");
         }
     }
 
     @Override
     public void eliminarEmpleado(String dni) {
-        empleadoRepository.deleteById(dni);
+        EmpleadoEntity empleadoExistente = empleadoRepository.findByDni(dni);
+        if(empleadoExistente != null) {
+            empleadoRepository.delete(empleadoExistente);
+        }
     }
 }

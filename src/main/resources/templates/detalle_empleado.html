@@ -25,14 +25,14 @@
                 <p><strong>Fecha de Nacimiento:</strong> <span th:text="${#dates.format(empleado.fechaNacimiento, 'yyyy-MM-dd')}"></span></p>
                 <p><strong>Dirección:</strong> <span th:text="${empleado.direccion}"></span></p>
                 <p><strong>Correo:</strong> <span th:text="${empleado.correo}"></span></p>
-                <p><strong>Área:</strong> <span th:text="${empleado.area.nombreArea}"></span></p>
+                <p><strong>Área:</strong> <span th:text="${empleado.area}"></span></p>
             </div>
 
             <div class="d-flex justify-content-between">
                 <form action="#" th:action="@{/delete/{dni}(dni=${empleado.dni})}" method="post" style="display:inline;">
                     <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar a este empleado?');">Eliminar</button>
                 </form>
-                <a href="/empleados" class="btn btn-dark">Volver</a>
+                <a th:href="@{/}" class="btn btn-dark">Volver</a>
             </div>
         </div>
     </div>

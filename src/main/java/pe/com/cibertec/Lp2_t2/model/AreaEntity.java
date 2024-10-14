@@ -32,5 +32,5 @@ public class AreaEntity {
     private String nombreArea;
 	
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<EmpleadoEntity> empleados;
+    private List<EmpleadoEntity> empleado;
 }

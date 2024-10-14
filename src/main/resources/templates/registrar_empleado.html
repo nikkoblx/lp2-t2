@@ -11,8 +11,11 @@
             background-color: #f8f9fa;
         }
         .card {
-            margin-top: 50px;
-            border-radius: 15px;
+			margin-top: 50px;
+			border-radius: 15px;
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
         }
         .btn-primary {
             background-color: #007bff;
@@ -39,11 +42,11 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingrese su nombre" value="Tu Nombre" required>
+                    <input type="text" class="form-control" id="nombreEmpleado" th:field="*{nombreEmpleado}" placeholder="Ingrese su nombre" value="Tu Nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellido:</label>
-                    <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Ingrese su apellido" value="Tu Apellido" required>
+                    <input type="text" class="form-control" id="apellidoEmpleado" th:field="*{apellidoEmpleado}" placeholder="Ingrese su apellido" value="Tu Apellido" required>
                 </div>
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de Nacimiento:</label>
@@ -59,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="area">Área:</label>
-                    <input type="text" class="form-control" id="area" th:field="*{area}" placeholder="Ingrese el área" required>
+                    <input type="number" class="form-control" id="area" th:field="*{area}" placeholder="Ingrese el área" required>
                 </div>
                 <div class="d-flex justify-content-between">
                     <a th:href="@{/}" class="btn btn-dark">Regresar</a>

@@ -11,8 +11,11 @@
             background-color: #f8f9fa;
         }
         .card {
-            margin-top: 50px;
-            border-radius: 15px;
+			margin-top: 50px;
+			border-radius: 15px;
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
         }
         .btn-primary {
             background-color: #007bff;
@@ -54,12 +57,10 @@
                     <label for="correo">Correo:</label>
                     <input type="email" class="form-control" id="correo" th:field="*{correo}" placeholder="Ingrese su correo electrónico" required>
                 </div>
-                <div class="form-group">
-                    <label for="area">Área:</label>
-                    <select class="form-control" id="area" th:field="*{areaId}" required>
-                        <option th:each="area : ${areas}" th:value="${area.id}" th:text="${area.nombreArea}"></option>
-                    </select>
-                </div>
+				<div class="form-group">
+				    <label for="area">Área:</label>
+				    <input type="number" class="form-control" id="area" th:field="*{area}" placeholder="Ingrese el área" required>
+				</div>
                 <div class="d-flex justify-content-between">
                     <a th:href="@{/}" class="btn btn-dark">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>

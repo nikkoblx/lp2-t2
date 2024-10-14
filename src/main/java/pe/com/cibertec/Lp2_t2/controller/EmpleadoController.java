@@ -16,16 +16,16 @@ public class EmpleadoController {
 
     private final EmpleadoService empleadoService;
 
-    @GetMapping("/listar_empleados")
-    public String index(Model model) {
+    @GetMapping("/")
+    public String listarEmpleados(Model model) {
         List<EmpleadoEntity> listarEmpleados = empleadoService.buscarEmpleados();
         model.addAttribute("list_empleado", listarEmpleados);
         return "listar_empleados";
     }
 
     @GetMapping("/detalle_empleado/{dni}")
-    public String verDetalle(Model model, @PathVariable("dni") String dniEmpleado) {
-        EmpleadoEntity empleadoEncontrado = empleadoService.buscarEmpleadoPorDni(dniEmpleado);
+    public String verDetalle(Model model, @PathVariable("dni") String dni) {
+        EmpleadoEntity empleadoEncontrado = empleadoService.buscarEmpleadoPorDni(dni);
         if (empleadoEncontrado != null) {
             model.addAttribute("empleado", empleadoEncontrado);
         } else {
@@ -34,10 +34,10 @@ public class EmpleadoController {
         return "detalle_empleado";
     }
 
-    @GetMapping("/delete_empleado/{dni}")
+    @GetMapping("/delete/{dni}")
     public String deleteEmpleado(@PathVariable("dni") String dni) {
         empleadoService.eliminarEmpleado(dni);
-        return "redirect:/listar_empleados";
+        return "redirect:/";
     }
 
     @GetMapping("/registrar_empleado")
@@ -56,7 +56,7 @@ public class EmpleadoController {
         }
         
         empleadoService.crearEmpleado(empleado);
-        return "redirect:/listar_empleados";
+        return "redirect:/";
     }
 
     @GetMapping("/editar_empleado/{dni}")
@@ -72,8 +72,8 @@ public class EmpleadoController {
     }
 
     @PostMapping("/editar_empleado/{dni}")
-    public String editarEmpleado(@PathVariable("dni") String dni, @ModelAttribute("empleado") EmpleadoEntity empleado) {
+    public String editarEmpleado(@PathVariable("dni") String dni, @ModelAttribute("empleado") EmpleadoEntity empleado, Model model) {
         empleadoService.actualizarEmpleado(dni, empleado);
-        return "redirect:/listar_empleados";
+        return "redirect:/";
     }
 }

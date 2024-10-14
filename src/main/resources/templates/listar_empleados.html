@@ -20,9 +20,9 @@
 <div class="container">
     <div class="card shadow">
         <div class="card-body">
-            <h1 class="text-center">Lista de Empleados</h1>
-            <div class="mb-3 text-right">
-				<a th:href="@{/registrar_empleado}" class="btn btn-success">Registrar</a>
+            <h1 class="text-center mt-3 mb-3">Lista de Empleados</h1>
+            <div class="mb-3 text-center">
+				<a th:href="@{/registrar_empleado}" class="btn btn-primary mt-3 mb-3">Registrar</a>
             </div>
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
@@ -45,7 +45,7 @@
                         <td th:text="${#dates.format(empleado.fechaNacimiento, 'yyyy-MM-dd')}"></td>
                         <td th:text="${empleado.direccion}"></td>
                         <td th:text="${empleado.correo}"></td>
-                        <td th:text="${empleado.area.nombreArea}"></td>
+                        <td th:text="${empleado.area}"></td>
                         <td>
                             <a th:href="@{/detalle_empleado/{dni}(dni=${empleado.dni})}" class="btn btn-info">Ver</a>
                             <a th:href="@{/editar_empleado/editar/{dni}(dni=${empleado.dni})}" class="btn btn-warning">Editar</a>

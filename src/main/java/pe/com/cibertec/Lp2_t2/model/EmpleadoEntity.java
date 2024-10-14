@@ -41,6 +41,6 @@ public class EmpleadoEntity {
 	private String correo;
 
 	@ManyToOne
-	@JoinColumn(name = "area_id", nullable = false)
+	@JoinColumn(name = "area_id", referencedColumnName = "area_id", nullable = false)
 	private AreaEntity area;
 }
